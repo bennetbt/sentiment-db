@@ -1,6 +1,6 @@
 -- MariaDB dump 10.19  Distrib 10.4.27-MariaDB, for Win64 (AMD64)
 --
--- Host: localhost    Database: sentiment_db
+-- Host: localhost    Database: sentiment_searches
 -- ------------------------------------------------------
 -- Server version	10.4.27-MariaDB
 
@@ -16,30 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `searched_txt_table`
+-- Table structure for table `sentiment_data`
 --
 
-DROP TABLE IF EXISTS `searched_txt_table`;
+DROP TABLE IF EXISTS `sentiment_data`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `searched_txt_table` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `Searched_Text` varchar(255) NOT NULL,
-  `Sentiment_type` varchar(15) NOT NULL,
-  `Percentage_Score` int(11) NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE `sentiment_data` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `text_searched` text NOT NULL,
+  `sentiment` enum('positive','negative','neutral') NOT NULL,
+  `percentage_score` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `searched_txt_table`
+-- Dumping data for table `sentiment_data`
 --
 
-LOCK TABLES `searched_txt_table` WRITE;
-/*!40000 ALTER TABLE `searched_txt_table` DISABLE KEYS */;
-INSERT INTO `searched_txt_table` VALUES (1,'2023-03-18 14:16:39','Hi how are you doing','Postive',100),(2,'2023-03-18 14:16:51','Hi how are you doing','Postive',100);
-/*!40000 ALTER TABLE `searched_txt_table` ENABLE KEYS */;
+LOCK TABLES `sentiment_data` WRITE;
+/*!40000 ALTER TABLE `sentiment_data` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sentiment_data` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-19 23:37:03
+-- Dump completed on 2023-03-20  0:21:37
