@@ -19,27 +19,24 @@
 -- Table structure for table `sentiment_data`
 --
 
-DROP TABLE IF EXISTS `sentiment_data`;
+DROP TABLE IF EXISTS sentiment_data;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `sentiment_data` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `text_searched` text NOT NULL,
-  `sentiment` enum('positive','negative','neutral') NOT NULL,
-  `percentage_score` decimal(5,2) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE sentiment_data (
+  id int NOT NULL,
+  gen_time timestamp NOT NULL DEFAULT current_timestamp,
+  text_searched text NOT NULL,
+  sentiment text NOT NULL,
+  percentage_score decimal(5,5) NOT NULL,
+  PRIMARY KEY (id)
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `sentiment_data`
 --
-
-LOCK TABLES `sentiment_data` WRITE;
 /*!40000 ALTER TABLE `sentiment_data` DISABLE KEYS */;
 /*!40000 ALTER TABLE `sentiment_data` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
